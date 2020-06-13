@@ -1,0 +1,26 @@
+// 20200608204701
+// https://raw.githubusercontent.com/codesandbox/npm-lib/master/tsconfig.json
+
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "alwaysStrict": true,
+    "outDir": "lib",
+    "sourceMap": true,
+    "declaration": true,
+    "removeComments": false,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "experimentalDecorators": true,
+    "lib": ["es6"]
+  },
+  "include": ["src/**/*.ts"]
+}
