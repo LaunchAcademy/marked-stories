@@ -11,6 +11,7 @@
     "lib/**/*"
   ],
   "dependencies": {
+    "clubhouse-lib": "^0.10.0",
     "got": "^11.3.0",
     "mdast-builder": "^1.1.1",
     "mdast-util-to-string": "^1.1.0",

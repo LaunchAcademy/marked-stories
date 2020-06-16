@@ -1,3 +1,5 @@
+import Epic from "./Epic";
+
 type StoryOptions = {
   name?: string;
   epicName?: string;
@@ -7,6 +9,7 @@ type StoryOptions = {
 export class Story {
   name?: string;
   epicName?: string;
+  epic?: Epic;
   description?: string;
 
   constructor(options: Partial<StoryOptions> = {}) {
