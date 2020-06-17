@@ -1,16 +1,38 @@
-import ClubhouseClient, { StoryChange as ClubhouseStoryChange, Story as ClubhouseStory } from "clubhouse-lib";
+import ClubhouseClient, {
+  StoryChange as ClubhouseStoryChange,
+  Story as ClubhouseStory,
+  EpicChange as ClubhouseEpicChange,
+  Epic as ClubhouseEpic,
+} from "clubhouse-lib";
+
+import configuration from "../../configuration";
+
+type ClubhouseConfiguration = {
+  apiToken?: string;
+  projectId?: number;
+};
 
 class Client {
-  apiToken: string;
-  projectId: string;
   private client: ClubhouseClient<any, any>;
 
-  constructor(apiToken: string, projectId: string) {
-    this.client = ClubhouseClient.create(apiToken);
+  constructor(config: ClubhouseConfiguration) {
+    this.client = ClubhouseClient.create(config.apiToken || "");
+  }
+
+  createEpic(epicChange: ClubhouseEpicChange): Promise<ClubhouseEpic> {
+    return this.client.createEpic(epicChange);
+  }
+
+  listEpics(): Promise<ClubhouseEpic[]> {
+    return this.client.listEpics();
   }
 
   createStory(storyChange: ClubhouseStoryChange): Promise<ClubhouseStory> {
     return this.client.createStory(storyChange);
+  }
+
+  static factory(): Client {
+    return new Client(configuration.clubhouse);
   }
 }
 

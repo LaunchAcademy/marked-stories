@@ -3,7 +3,7 @@ import Story from "../Story";
 import { join } from "path";
 
 describe("Story Parser", () => {
-  const relativeFixturePath = "fixtures/validStoryFile.md";
+  const relativeFixturePath = "../../../test/fixtures/validStoryFile.md";
   const fixturePath = join(__dirname, relativeFixturePath);
   let parser: StoryParser;
   let stories: Story[] = [];
