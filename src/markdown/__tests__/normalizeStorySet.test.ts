@@ -18,4 +18,11 @@ describe("normalize story set", () => {
     const { epic: epicA } = storyA;
     expect(epicA).toEqual(storyB.epic);
   });
+
+  it("associates an existing epic to another story", () => {
+    normalizeStorySet([storyA, storyB]);
+    const { epic: epicA } = storyA;
+    expect(epicA).toBeDefined();
+    expect(epicA).toEqual(storyB.epic);
+  });
 });

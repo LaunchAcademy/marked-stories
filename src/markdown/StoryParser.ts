@@ -51,6 +51,9 @@ class StoryParser {
       i += 1;
     } while (i < children.length);
     if (story) {
+      // TODO: eliminate this repetition with a better traversal
+      story.description = remark().stringify(root(rangeNodes));
+      story.epicName = currentEpicName;
       this.stories.push(story);
     }
 
