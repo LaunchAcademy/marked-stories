@@ -3,7 +3,7 @@ import Story from "../Story";
 import { join } from "path";
 
 describe("Story Parser", () => {
-  const relativeFixturePath = "fixtures/validStoryFile.md";
+  const relativeFixturePath = "../../../test/fixtures/validStoryFile.md";
   const fixturePath = join(__dirname, relativeFixturePath);
   let parser: StoryParser;
   let stories: Story[] = [];
@@ -28,6 +28,9 @@ describe("Story Parser", () => {
     expect(stories[0].epicName).toEqual("Initial Import");
   });
 
+  it("persists the epic name across multiple stories", () => {
+    expect(stories[1].epicName).toEqual("Initial Import");
+  });
   it("creates a story with a description", () => {
     expect(stories[0].description).toBeTruthy();
     expect(stories[0].description).toMatch("Acceptance Criteria");
