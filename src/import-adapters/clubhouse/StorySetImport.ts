@@ -31,7 +31,7 @@ class StorySetImport {
       if (epic.name) {
         const persistedEpicId = epicNameIdMap.get(epic.name);
         if (!persistedEpicId) {
-          const persistedEpic = await this.client.createEpic({ name: epic.name });
+          const persistedEpic = await this.client.createEpic({ name: epic.name, description: epic.description });
           epicNameIdMap.set(persistedEpic.name, persistedEpic.id);
         }
       }
@@ -40,8 +40,8 @@ class StorySetImport {
     // create stories
     for (const story of stories) {
       const storyChange = this.makeStoryChange(story);
-      if (story.epicName) {
-        storyChange.epic_id = epicNameIdMap.get(story.epicName);
+      if (story.epic?.name) {
+        storyChange.epic_id = epicNameIdMap.get(story.epic?.name);
       }
       await this.client.createStory(storyChange);
     }
